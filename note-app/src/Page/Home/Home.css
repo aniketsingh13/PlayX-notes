@@ -1,0 +1,10 @@
+.main-container{
+    height: 100vh;
+}
+
+.aside-container{
+    flex: 1;
+}
+.center-container{
+    flex: 4
+}

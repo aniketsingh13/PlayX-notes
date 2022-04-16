@@ -11,7 +11,7 @@ const LandingPage = () => {
          <div className="noteText-container mr-l">
            <h2 className="font-xl f-l noteText-header mb-s">Meet your modern</h2>
            <h3 className="font-l f-m mt-s mb-l">Note Taking App</h3>
-           <h4 className="note-text font-l f-s mb-l">Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.</h4>
+           <h4 className="note-text font-l f-m mb-l">Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.</h4>
            <Link to='/home'> <button className="note-btn mt-s p-s f-s">Join Now</button></Link>
          </div>
          <div className="noteImg-div ">

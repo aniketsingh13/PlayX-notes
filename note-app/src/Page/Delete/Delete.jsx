@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import {Navbar} from "../../Component/Index";
 
 const Delete = () => {
   return (
-    <div>Delete</div>
+    <div>
+     <Navbar />
+    </div>
   )
 }
 

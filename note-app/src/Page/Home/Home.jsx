@@ -1,8 +1,23 @@
 import React from 'react'
+import "./Home.css"
+import { Aside, Main, Navbar } from '../../Component/Index';
+
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+       <main className='main-container'>
+      <Navbar />
+      <div className='flex'>
+       <div className='aside-container'>
+        <Aside />
+       </div>
+       <div className='center-container'>
+         <Main />
+       </div>
+      </div>
+      </main>
+    </div>
   )
 }
 

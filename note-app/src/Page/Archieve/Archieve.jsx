@@ -1,8 +1,10 @@
 import React from 'react'
-
+import { Navbar } from '../../Component/Index'
 const Archieve = () => {
   return (
-    <div>Archieve</div>
+    <div>
+      <Navbar />
+    </div>
   )
 }
 
