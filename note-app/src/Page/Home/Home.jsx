@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Home.css"
-import { Aside, Main, Navbar } from '../../Component/Index';
+import { Aside, Main, Navbar,Notecard } from '../../Component/Index';
+
 
 
 const Home = () => {
@@ -16,6 +17,10 @@ const Home = () => {
          <Main />
        </div>
       </div>
+      <div>
+      <Notecard />
+      </div>
+
       </main>
     </div>
   )
