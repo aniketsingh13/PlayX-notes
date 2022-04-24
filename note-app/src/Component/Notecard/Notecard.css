@@ -13,6 +13,7 @@
    background-color: var(--offwhite);
    border: none;
    cursor: pointer;
+   color: var(--primary-color-hover);
 }
 .notecard-footer{
  justify-content: flex-end;

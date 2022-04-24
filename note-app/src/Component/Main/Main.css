@@ -34,3 +34,15 @@
     color: var(--offwhite);
     
 }
+.note-colorPallet{
+    border: 1px solid var(--border-color);
+    background-color: var(--primary-color-hover);
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+
