@@ -13,11 +13,7 @@ const Login = () => {
    const {setUser,encodedToken} = useAuth();
    let navigate = useNavigate();
   
-    useEffect(() =>{
-        if(encodedToken){
-            navigate('/home')
-        }
-    })
+    
 
 const loginHandler = async (e)=>{
         e.preventDefault();
@@ -53,6 +49,7 @@ const disablefield = email !== '' && password !== ''
                 <input type="text" className="f-s mt-s " name="email" id="email" placeholder="Enter your email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
                 />
             </div>
             <div className="mt-l">
@@ -60,6 +57,7 @@ const disablefield = email !== '' && password !== ''
                 <input type={showPass ? 'text' : 'password' } className="f-s  mt-s " name="email" id="pass" placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
                 />
             </div>
             <div className='mt-s'>{error}</div>
@@ -78,7 +76,7 @@ const disablefield = email !== '' && password !== ''
                 <button className="loginGuest-btn f-s" onClick={guestLoginHandler}>Login as Guest</button>
             </div>
             <div className="mt-l mb-l">
-                <Link to='/signup' className='f-s'>Create New Account</Link>
+                <Link to='/signup' className='f-s font-l'>Create New Account</Link>
             </div>
         </form>
     </div>
