@@ -1,14 +1,16 @@
 import React from 'react'
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import Mockman from "mockman-js";
 import LandingPage from '../Page/LandingPage/LandingPage';
 import { Archieve, Delete, Home, Login, Page404, Signup } from '../Page';
+import { useAuth } from '../Context/AuthContex';
 const RoutePath = () => {
+  const {encodedToken} = useAuth()
   return (
     <div>
         <Routes>
             <Route  path='/' element={<LandingPage />} />
-            <Route  path='/home' element={<Home />} />
+            <Route  path='/home' element={encodedToken === null ? <Navigate to='/login' replace/> : <Home /> } />
              <Route path='/delete' element={<Delete />} />
              <Route path='/archieve' element={<Archieve />} />
              <Route path='/mockman' element={<Mockman />} />

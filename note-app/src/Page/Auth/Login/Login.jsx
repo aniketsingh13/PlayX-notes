@@ -12,9 +12,13 @@ const Login = () => {
     const [error,setError] = useState(null)
    const {setUser,encodedToken} = useAuth();
    let navigate = useNavigate();
-  
-    
 
+   useEffect(() =>{
+       if(encodedToken){
+           navigate('/home')
+       }
+   })
+  
 const loginHandler = async (e)=>{
         e.preventDefault();
      try {

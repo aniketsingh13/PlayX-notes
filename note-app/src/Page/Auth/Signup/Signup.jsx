@@ -20,6 +20,8 @@ const Signup = () => {
   const {setUser,encodedToken} = useAuth()
   const navigate = useNavigate()
 
+
+
   
      const signupHandler= async (e)=>{
         e.preventDefault();
