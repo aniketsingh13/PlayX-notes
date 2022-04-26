@@ -10,7 +10,7 @@ const RoutePath = () => {
     <div>
         <Routes>
             <Route  path='/' element={<LandingPage />} />
-            <Route  path='/home' element={encodedToken === null ? <Navigate to='/login' replace/> : <Home /> } />
+            <Route  path='/home' element={encodedToken  ? <Home />  : <Navigate to='/login' replace/> } />
              <Route path='/delete' element={<Delete />} />
              <Route path='/archieve' element={<Archieve />} />
              <Route path='/mockman' element={<Mockman />} />
