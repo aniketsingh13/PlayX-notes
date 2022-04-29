@@ -1,6 +1,6 @@
 
 
-import React from 'react'
+
 
 const SignupReducer = (state,action) => {
     switch(action.type){

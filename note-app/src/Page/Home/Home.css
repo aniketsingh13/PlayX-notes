@@ -8,3 +8,10 @@
 .center-container{
     flex: 4
 }
+.note-card{
+    justify-content: space-around;
+    gap: 2rem;
+}
+.emptyNotemessage{
+    color: var(--primary-color);
+}

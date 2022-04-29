@@ -2,7 +2,7 @@
 .notecard-Container{
    width: 21rem;
    border: 1px solid var(--border-color);
-   border-radius: 5px;
+   border-radius: 10px;
    background-color: var(--offwhite);
    box-shadow: 1px 1px 1px 1px var(--boxShadow-color);
 }
