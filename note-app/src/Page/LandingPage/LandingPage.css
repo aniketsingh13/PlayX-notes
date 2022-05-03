@@ -1,0 +1,32 @@
+.main-container{
+   height: 100vh;
+}
+.center-container{
+   justify-content: center;
+   align-items: center;
+}
+.note-img{
+   width: 100%;
+   height: auto;
+   margin-left: 3rem;
+}
+.note-text{
+   max-width: 30rem;
+   color: var(--secondary-color);
+   letter-spacing: 2px;
+   line-height: 1.9rem;
+}
+.noteImg-div{
+   width: 55%;
+}
+.noteText-header{
+   color: var(--secondary-color);
+   letter-spacing: 2px;
+}
+.note-btn{
+   border: none;
+   background-color: var(--primary-color-hover);
+   color: var(--offwhite);
+   cursor: pointer;
+   border-radius: 10px;
+}

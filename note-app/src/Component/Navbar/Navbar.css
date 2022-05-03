@@ -1,0 +1,6 @@
+.note-header{
+    border-bottom: 1px solid var(--primary-color-hover);
+}
+.note-title{
+    color: var(--primary-color-hover);
+}

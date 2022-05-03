@@ -1,0 +1,17 @@
+.main-container{
+    height: 100vh;
+}
+
+.aside-container{
+    flex: 1;
+}
+.center-container{
+    flex: 4
+}
+.note-card{
+    justify-content: space-around;
+    gap: 2rem;
+}
+.emptyNotemessage{
+    color: var(--primary-color);
+}

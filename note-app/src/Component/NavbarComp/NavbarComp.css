@@ -1,0 +1,21 @@
+.note-headers{
+    border-bottom: 1px solid var(--primary-color-hover);
+    justify-content: space-between;
+}
+.note-titles{
+    color: var(--primary-color-hover);
+}
+
+.homelogout-btn{
+    border: none;
+    background-color: var(--primary-color-hover);
+    color: var(--offwhite);
+    cursor: pointer;
+    border-radius: 10px 8px;
+}
+.homelogout-btn:hover{
+    background-color: var(--primary-color);
+}
+.Homebtn-form{
+    padding-right: 4rem;
+}

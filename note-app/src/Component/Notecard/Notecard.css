@@ -1,0 +1,20 @@
+
+.notecard-Container{
+   width: 21rem;
+   border: 1px solid var(--border-color);
+   border-radius: 10px;
+   background-color: var(--offwhite);
+   box-shadow: 1px 1px 1px 1px var(--boxShadow-color);
+}
+.notecard-header{
+   justify-content: space-between;
+}
+.notecard-btn{
+   background-color: var(--offwhite);
+   border: none;
+   cursor: pointer;
+   color: var(--primary-color-hover);
+}
+.notecard-footer{
+ justify-content: flex-end;
+}

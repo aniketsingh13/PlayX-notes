@@ -1,0 +1,15 @@
+.main404-container{
+    height: 100vh;   
+}
+.Page404-heading{
+   color: var(--primary-color-hover);
+   text-align: center;
+}
+.Page404-cont{
+    width: 60%;
+}
+.page404-Img{
+    width: 100%;
+    height: auto;
+  
+}
