@@ -7,21 +7,21 @@ import {BsPin} from "react-icons/bs";
 
 
 const Notecard = ({notes}) => {
-  const {title,text} = notes;
+  const {title,text,noteColor} = notes;
   return (
     <div className=' mt-l flex flex-center ' >
-      <section className='notecard-Container'>
+      <section className='notecard-Container' style={{backgroundColor: noteColor}}>
         <div className='notecard-header flex p-s'>
           <h2 className="f-m font-m">{title}</h2>
-          <button className="notecard-btn f-m"><BsPin /></button>
+          <button className="notecard-btn f-m"style={{backgroundColor: noteColor}}><BsPin /></button>
         </div>
         <div className="notecard-body">
           <p className=" font-m f-s pl-s mb-l">{text}</p>
         </div>
-        <div className="notecard-footer flex mb-s ">
-         <button className="notecard-btn f-m pr-s"><BiEdit /></button>
-         <button className="notecard-btn f-m pr-s"><BsArchiveFill /></button>
-         <button className="notecard-btn f-m pr-s"><MdDelete /></button>
+        <div className="notecard-footer flex mb-s " >
+         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}}><BiEdit /></button>
+         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}}><BsArchiveFill /></button>
+         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}}><MdDelete /></button>
         </div>
       </section>
       

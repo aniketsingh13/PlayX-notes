@@ -20,7 +20,6 @@
 }
 .editorIcon-btn{
     border: none;
-    background-color: var(--offwhite);
     color: var(--primary-color-hover);
     cursor: pointer;
     align-self: center;
@@ -37,5 +36,36 @@
 .editorNormal-btn:hover{
     background-color: var(--primary-color);
 }
+.notePallet-container{
+    background-color: #fff;
+  box-shadow: 2px 2px 2px 2px var(--boxShadow-color);
+  position: absolute;
+  top: 42%;
+  left: 44.5%;
+  justify-content: space-between;
+  gap: .5rem;
+  border-radius: 5px;
+}
+.note-color{
+    width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.note-color-pink{
+    background-color: #f28b82;
+}
+.note-color-yellow{
+   background-color: #fbbc04;
+}
 
-
+ .note-color-green{
+    background-color: #ccff90;
+ }
+ .note-color-skyBlue{
+     background-color: #a7ffeb;
+ }
+ .note-color-purple{
+     background-color: #d7aefb;
+ }
