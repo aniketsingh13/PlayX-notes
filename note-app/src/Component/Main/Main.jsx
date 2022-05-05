@@ -21,15 +21,26 @@ const Main = () => {
   {id: uuid(), color: "skyBlue"},
   {id: uuid(), color: "purple"}
 ]
+const tagPallets = [
+  {id: uuid(), tag: ''},
+  {id: uuid(), tag: "Work"},
+  {id: uuid(), tag: "Important"},
+  {id: uuid(), tag: "Secondary"},
+  {id: uuid(), tag: "Chores"},
+  {id: uuid(), tag: "College"}
+]
   const[state,dispatch] = useReducer(setnoteReducer,{
     title: '',
     text: '',
     noteColor: '',
-    colorPalletVisible: false
+    colorPalletVisible: false,
+    tags: '',
+    tagPalletVisible: false
   })
-  const {title,text,colorPalletVisible,noteColor} = state;
+  const {title,text,colorPalletVisible,noteColor,tags,tagPalletVisible} = state;
    const {setNotes} = useNote();
   const {encodedToken} = useAuth()
+ 
   
    const saveNoteHandler = async(e)=>{
           e.preventDefault()
@@ -37,7 +48,8 @@ const Main = () => {
             _id: uuid(),
             title,
             text,
-            noteColor
+            noteColor,
+            tags
           };
           try{
           const response= await axios.post(
@@ -92,7 +104,22 @@ const Main = () => {
           }
          </div>
        )}
-       <div className='editorIcon-btn f-m ml-s'><MdOutlineNewLabel /></div>
+       <div className='editorIcon-btn f-m ml-s' onClick={() => dispatch({type: "TAGPALLET"})}><MdOutlineNewLabel /></div>
+       {tagPalletVisible && (
+         <div className='tagPallet-container flex'>
+         {
+           tagPallets.map(({id,tag}) =>(
+            <div key={id}
+              className='tagCont f-s font-l'
+               onClick={() => dispatch({type: "SET_TAG",payload: tag})}
+            >
+              {tag}
+            </div>
+           ))
+         }
+         </div>
+       )}
+         {tags !== '' && <div className='displayTags mt-s ml-s f-s font-l p-xs'>{tags}</div>}
        </div>
        <div>
          <button className='editorNormal-btn  mr-s'type='submit' >Add</button>
