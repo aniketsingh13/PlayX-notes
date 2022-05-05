@@ -13,12 +13,22 @@ import axios from "axios";
 
 
 const Main = () => {
+  const colorpalletColors=[
+    {id:uuid(),color: ''},
+    {id: uuid(), color: "pink"},
+  {id: uuid(), color: "yellow"},
+  {id: uuid(), color: "green"},
+  {id: uuid(), color: "skyBlue"},
+  {id: uuid(), color: "purple"}
+]
   const[state,dispatch] = useReducer(setnoteReducer,{
     title: '',
     text: '',
+    noteColor: '',
+    colorPalletVisible: false
   })
-  const {title,text} = state;
-   const {notes,setNotes} = useNote();
+  const {title,text,colorPalletVisible,noteColor} = state;
+   const {setNotes} = useNote();
   const {encodedToken} = useAuth()
   
    const saveNoteHandler = async(e)=>{
@@ -26,7 +36,8 @@ const Main = () => {
           const newNote={
             _id: uuid(),
             title,
-            text
+            text,
+            noteColor
           };
           try{
           const response= await axios.post(
@@ -38,6 +49,7 @@ const Main = () => {
               }
             }
           )
+          console.log(response.data)
           if(response.status === 201){
             setNotes(response.data.notes)
             dispatch({type: "RESET"})
@@ -52,27 +64,40 @@ const Main = () => {
 
 
   return (
-    <div className='mt-l flex flex-center'>
-      <form className='note-edittor flex flex-column mt-s ' onSubmit={saveNoteHandler}>
-     <input type="text" placeholder='Title' className='noteEditor-input mt-s p-s f-s' name='Title'
+    <div className='mt-l flex flex-center' >
+      <form className={`note-edittor note-color-${noteColor} flex flex-column mt-s ` } onSubmit={saveNoteHandler}>
+     <input type="text" placeholder='Title' className={`noteEditor-input mt-s p-s f-s  note-color-${noteColor}`} name='Title'
       value={title}
       onChange={(e) => dispatch({type: "TITLE",payload: e.target.value})}
       required
      />
-     <textarea type='text'placeholder='Take a note'  className='noteEditor-textarea  f-s p-s' cols="18" rows="3"
+     <textarea type='text'placeholder='Take a note'  className={`noteEditor-textarea  f-s p-s note-color-${noteColor}`} cols="18" rows="3"
       value={text}
       onChange={(e) => dispatch({type:"TEXT",payload: e.target.value})}
      ></textarea>
      <div className='flex editorbtn-container mb-s'>
-       <div>
-       <button className='editorIcon-btn f-m ml-s'><IoMdColorPalette /></button>
-       <button className='editorIcon-btn f-m ml-s'><MdOutlineNewLabel /></button>
+       <div className='flex'>
+ <div className='editorIcon-btn f-m ml-s' onClick={() => dispatch({type: "COLORPALLET"})}><IoMdColorPalette /></div>
+ {colorPalletVisible && (
+         <div className='notePallet-container flex '>
+          {
+            colorpalletColors.map(({id,color}) =>(
+              <div
+              key={id}
+              className={`note-color note-color-${color}`}
+              onClick={() => dispatch({type: "SETNOTE_COLOR",payload: color})}
+              >
+                </div>
+            ) )
+          }
+         </div>
+       )}
+       <div className='editorIcon-btn f-m ml-s'><MdOutlineNewLabel /></div>
        </div>
        <div>
          <button className='editorNormal-btn  mr-s'type='submit' >Add</button>
        </div>
      </div>
-     
       </form>
     </div>
   )
