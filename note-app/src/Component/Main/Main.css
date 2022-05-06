@@ -69,3 +69,28 @@
  .note-color-purple{
      background-color: #d7aefb;
  }
+ .tagPallet-container{
+    background-color: #fff;
+    box-shadow: 2px 2px 2px 2px var(--boxShadow-color);
+    position: absolute;
+    top: 42%;
+    left: 47%;
+    gap: .6rem;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+ .tagCont{
+    width: 5rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+ }
+ .tagCont:hover{
+ color: var(--primary-color);
+ }
+ .displayTags{
+     background-color: var(--primary-color-hover);
+     color: var(--offwhite);
+     border-radius: 7px;
+ }

@@ -12,11 +12,16 @@ const setnoteReducer = (state,action) => {
           return {...state,noteColor:action.payload}
           case "COLORPALLET":
             return {...state,colorPalletVisible: !state.colorPalletVisible}
+            case "TAGPALLET":
+              return {...state,tagPalletVisible : !state.tagPalletVisible}
+              case "SET_TAG":
+                return {...state,tags : action.payload}
         case "RESET":
           return {
             title: '',
               text: '',
               noteColor: '',
+              tags: ''
           }
          default:
           return state;

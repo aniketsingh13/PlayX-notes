@@ -16,5 +16,10 @@
    color: var(--primary-color-hover);
 }
 .notecard-footer{
- justify-content: flex-end;
+ justify-content: space-between;
+}
+.noteCard-tag{
+   background-color: var(--primary-color-hover);
+     color: var(--offwhite);
+     border-radius: 7px;
 }
