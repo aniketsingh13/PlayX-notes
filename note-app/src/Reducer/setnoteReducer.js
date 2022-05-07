@@ -16,13 +16,23 @@ const setnoteReducer = (state,action) => {
               return {...state,tagPalletVisible : !state.tagPalletVisible}
               case "SET_TAG":
                 return {...state,tags : action.payload}
-        case "RESET":
-          return {
-            title: '',
-              text: '',
-              noteColor: '',
-              tags: ''
-          }
+                case "TAGS_HIGH":
+                  return {...state,priority: action.payload}
+                  case "TAGS_LOW":
+                  return {...state,priority: action.payload}
+                  case "TAG_MEDIUM":
+                    return {...state,priority: action.payload}
+                    case "PRIORTY":
+                      return {...state,priority: action.payload}
+
+                    case "RESET":
+                      return {
+                   title: '',
+                   text: '',
+                 noteColor: '',
+                   tags: '',
+                 priority: 'High'
+                }
          default:
           return state;
   }

@@ -35,9 +35,10 @@ const tagPallets = [
     noteColor: '',
     colorPalletVisible: false,
     tags: '',
-    tagPalletVisible: false
+    tagPalletVisible: false,
+    priority: 'High',
   })
-  const {title,text,colorPalletVisible,noteColor,tags,tagPalletVisible} = state;
+  const {title,text,colorPalletVisible,noteColor,tags,tagPalletVisible,priority} = state;
    const {setNotes} = useNote();
   const {encodedToken} = useAuth()
  
@@ -49,7 +50,8 @@ const tagPallets = [
             title,
             text,
             noteColor,
-            tags
+            tags,
+            priority
           };
           try{
           const response= await axios.post(
@@ -119,6 +121,11 @@ const tagPallets = [
          }
          </div>
        )}
+       <select  className="priorityTag ml-s font-m f-s " value={priority} onChange={(e) => dispatch({type: "PRIORTY" ,payload: e.target.value})}>
+         <option  onClick={() => dispatch({type: "TAGS_HIGH"})}>High</option>
+         <option  onClick={() => dispatch({type: "TAGS_LOW"})}>Low</option>
+         <option  onClick={() => dispatch({type: "TAG_MEDIUM"})}>Medium</option>
+       </select>
          {tags !== '' && <div className='displayTags mt-s ml-s f-s font-l p-xs'>{tags}</div>}
        </div>
        <div>
