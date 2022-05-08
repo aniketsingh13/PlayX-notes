@@ -94,3 +94,10 @@
      color: var(--offwhite);
      border-radius: 7px;
  }
+ .priorityTag{
+     border:none;
+     background-color: var(--primary-color-hover);
+     color: var(--offwhite);
+     outline: 0px solid transparent;
+     border-radius: 15px;
+ }
