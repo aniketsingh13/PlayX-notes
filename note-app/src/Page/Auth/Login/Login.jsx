@@ -77,7 +77,7 @@ const disablefield = email !== '' && password !== ''
                 <button className="login-btn f-s" type='submit' disabled={!disablefield} >Login</button>
             </div>
             <div className="mt-l">
-                <button className="loginGuest-btn f-s" onClick={guestLoginHandler}>Login as Guest</button>
+                <div className="loginGuest-btn f-s p-xss" onClick={guestLoginHandler}>Login as Guest</div>
             </div>
             <div className="mt-l mb-l">
                 <Link to='/signup' className='f-s font-l'>Create New Account</Link>

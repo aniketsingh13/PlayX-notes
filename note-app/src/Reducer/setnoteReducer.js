@@ -24,6 +24,8 @@ const setnoteReducer = (state,action) => {
                     return {...state,priority: action.payload}
                     case "PRIORTY":
                       return {...state,priority: action.payload}
+                      case "PINTOGGLE":
+                        return {...state,pinned : !state.pinned}
 
                     case "RESET":
                       return {
@@ -31,10 +33,11 @@ const setnoteReducer = (state,action) => {
                    text: '',
                  noteColor: '',
                    tags: '',
-                 priority: 'High'
+                 priority: 'High',
+                 pinned: false
                 }
          default:
-          return state;
+          throw new Error("Action type not found");
   }
 }
 

@@ -9,6 +9,8 @@ import { useNote } from '../../Context/NoteContext';
 
 const Home = () => {
   const {notes} = useNote();
+  let pinnedNotes = notes.filter((note) => note.pinned);
+  let unPinnedNotes = notes.filter(note => !note.pinned)
   return (
     <div>
        <main className='main-container'>
@@ -21,12 +23,25 @@ const Home = () => {
          <Main />
        </div>
       </div>
-      <div className='note-card flex flex-wrap mb-xl'>
-        {notes.length > 0 && (<>
-        {notes.map((note) => (
+      <div className=' mt-l '>
+        {pinnedNotes.length > 0 && (<>
+        <h3 className='pinned-notes f-l font-xl ml-l '>Pinned </h3>
+        <div className='note-card flex flex-wrap'>
+        {pinnedNotes.map((note) => (
           <Notecard key={note._id} notes={note}/>
         ))}
+        </div>
         </>)
+         }
+         {
+           unPinnedNotes.length > 0 && (<>
+           <h3 className='unpinned-note f-l font-xl mt-s ml-l'>Other </h3>
+           <div className='note-card flex flex-wrap '>
+           {unPinnedNotes.map((note) => (
+          <Notecard key={note._id} notes={note}/>
+        ))}
+           </div>
+           </>)
          }
        </div >
        <div className='flex flex-center '>
