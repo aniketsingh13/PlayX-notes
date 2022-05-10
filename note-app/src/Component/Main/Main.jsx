@@ -7,7 +7,8 @@ import { useNote } from '../../Context/NoteContext';
 import { useAuth } from '../../Context/AuthContex';
 import {v4 as uuid} from "uuid";
 import axios from "axios";
-
+import {BsFillPinFill} from "react-icons/bs";
+import {BsPin} from "react-icons/bs";
 
 
 
@@ -37,10 +38,12 @@ const tagPallets = [
     tags: '',
     tagPalletVisible: false,
     priority: 'High',
+    pinned: false
   })
-  const {title,text,colorPalletVisible,noteColor,tags,tagPalletVisible,priority} = state;
+  const {title,text,colorPalletVisible,noteColor,tags,tagPalletVisible,priority,pinned} = state;
    const {setNotes} = useNote();
-  const {encodedToken} = useAuth()
+  const {encodedToken} = useAuth();
+ 
  
   
    const saveNoteHandler = async(e)=>{
@@ -51,7 +54,9 @@ const tagPallets = [
             text,
             noteColor,
             tags,
-            priority
+            priority,
+            CreatedAt : new Date().toLocaleString(),
+            pinned
           };
           try{
           const response= await axios.post(
@@ -63,7 +68,6 @@ const tagPallets = [
               }
             }
           )
-          console.log(response.data)
           if(response.status === 201){
             setNotes(response.data.notes)
             dispatch({type: "RESET"})
@@ -75,16 +79,17 @@ const tagPallets = [
 
 
 
-
-
   return (
     <div className='mt-l flex flex-center' >
       <form className={`note-edittor note-color-${noteColor} flex flex-column mt-s ` } onSubmit={saveNoteHandler}>
+        <div className='flex'>
      <input type="text" placeholder='Title' className={`noteEditor-input mt-s p-s f-s  note-color-${noteColor}`} name='Title'
       value={title}
       onChange={(e) => dispatch({type: "TITLE",payload: e.target.value})}
       required
      />
+     <div className={`note-color-${noteColor} f-m toggle-btn`}   onClick={() => dispatch({type: "PINTOGGLE"})} >{pinned ?<BsFillPinFill className='pin-note mt-l' /> : <BsPin className='pin-note mt-l' />}</div>
+     </div>
      <textarea type='text'placeholder='Take a note'  className={`noteEditor-textarea  f-s p-s note-color-${noteColor}`} cols="18" rows="3"
       value={text}
       onChange={(e) => dispatch({type:"TEXT",payload: e.target.value})}

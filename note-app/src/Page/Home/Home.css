@@ -15,3 +15,11 @@
 .emptyNotemessage{
     color: var(--primary-color);
 }
+.pinned-notes{ 
+    color: var(--primary-color-hover);
+    text-decoration: underline;
+}
+.unpinned-note{
+    color: var(--primary-color-hover);
+    text-decoration: underline;
+}

@@ -53,6 +53,8 @@
     background-color: var(--primary-color);
     border: 1px solid var(--primary-color-hover);
     cursor: pointer;
+    margin: auto;
+  
 }
 .loginGuest-btn:hover{
     background-color: var(--primary-color-hover)

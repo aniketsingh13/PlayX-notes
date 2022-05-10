@@ -6,7 +6,7 @@
 }
 .noteEditor-input {
     background-color: var(--offwhite);
-    width: 100%;
+    width: 90%;
     border: none;
     outline: 0px solid transparent;
 }
@@ -74,7 +74,7 @@
     box-shadow: 2px 2px 2px 2px var(--boxShadow-color);
     position: absolute;
     top: 42%;
-    left: 47%;
+    left: 46%;
     gap: .6rem;
     border-radius: 5px;
     flex-direction: column;
@@ -100,4 +100,16 @@
      color: var(--offwhite);
      outline: 0px solid transparent;
      border-radius: 15px;
+ }
+ .toggle-btn{
+     cursor: pointer;
+ }
+ .pin-note{
+     width: 1.5rem;
+     height: 1.5rem;
+     padding: .2rem;
+ }
+ .pin-note:hover{
+    background-color: #e2e0e0f6;
+    border-radius: 100%;
  }
