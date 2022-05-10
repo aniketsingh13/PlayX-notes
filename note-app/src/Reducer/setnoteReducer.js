@@ -37,7 +37,7 @@ const setnoteReducer = (state,action) => {
                  pinned: false
                 }
          default:
-          return state;
+          throw new Error("Action type not found");
   }
 }
 
