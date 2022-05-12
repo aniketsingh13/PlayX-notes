@@ -8,7 +8,8 @@ import { useNote } from '../../Context/NoteContext';
 
 
 const Home = () => {
-  const {notes} = useNote();
+  const {noteState} = useNote();
+  const {notes} = noteState;
   let pinnedNotes = notes.filter((note) => note.pinned);
   let unPinnedNotes = notes.filter(note => !note.pinned)
   return (

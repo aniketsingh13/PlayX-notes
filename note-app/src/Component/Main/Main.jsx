@@ -7,21 +7,19 @@ import { useNote } from '../../Context/NoteContext';
 import { useAuth } from '../../Context/AuthContex';
 import {v4 as uuid} from "uuid";
 import axios from "axios";
-import {BsFillPinFill} from "react-icons/bs";
+import { BsFillPinFill} from "react-icons/bs";
 import {BsPin} from "react-icons/bs";
 
 
-
-
-const Main = () => {
-  const colorpalletColors=[
-    {id:uuid(),color: ''},
-    {id: uuid(), color: "pink"},
-  {id: uuid(), color: "yellow"},
-  {id: uuid(), color: "green"},
-  {id: uuid(), color: "skyBlue"},
-  {id: uuid(), color: "purple"}
+const colorpalletColors=[
+  {id:uuid(),color: ''},
+  {id: uuid(), color: "pink"},
+{id: uuid(), color: "yellow"},
+{id: uuid(), color: "green"},
+{id: uuid(), color: "skyBlue"},
+{id: uuid(), color: "purple"}
 ]
+
 const tagPallets = [
   {id: uuid(), tag: ''},
   {id: uuid(), tag: "Work"},
@@ -30,18 +28,20 @@ const tagPallets = [
   {id: uuid(), tag: "Chores"},
   {id: uuid(), tag: "College"}
 ]
+const Main = ({editNotes,setIsEdit}) => {
+
   const[state,dispatch] = useReducer(setnoteReducer,{
-    title: '',
-    text: '',
-    noteColor: '',
+    title: editNotes?.title || '',
+    text: editNotes?.text || '',
+    noteColor: editNotes?.noteColor || '',
     colorPalletVisible: false,
-    tags: '',
+    tags: editNotes?.tags||'',
     tagPalletVisible: false,
-    priority: 'High',
-    pinned: false
+    priority: editNotes?.priority ||'High',
+    pinned: editNotes?.pinned ||false
   })
   const {title,text,colorPalletVisible,noteColor,tags,tagPalletVisible,priority,pinned} = state;
-   const {setNotes} = useNote();
+   const {noteDispatch} = useNote();
   const {encodedToken} = useAuth();
  
  
@@ -69,7 +69,7 @@ const tagPallets = [
             }
           )
           if(response.status === 201){
-            setNotes(response.data.notes)
+           noteDispatch({type: "ADD_NOTE",payload: newNote})
             dispatch({type: "RESET"})
           }  
           }catch(error){
@@ -77,11 +77,47 @@ const tagPallets = [
           }
    }
 
+   const updateNoteHandler =async(updateNotes) =>{
+       try {
+         const response= await axios.post(`api/notes/${updateNotes._id}`,
+         {note: updateNotes},
+         {
+           headers:{
+            authorization: encodedToken
+           }
+         }
+         )
+         
+         if(response.status === 201){
+          noteDispatch({type: "EDIT_NOTES",payload: updateNotes })
+         }
+       } catch (error) {
+         console.log(error.response)
+       }
+   }
+   
+   const editHandler=async(e)=>{
+      e.preventDefault();
+      const updateNotes={
+        _id: editNotes._id,
+        title,
+        text,
+        noteColor,
+        tags,
+        priority,
+        pinned,
+        CreatedAt : new Date().toLocaleString()
+      }
+      updateNoteHandler(updateNotes);
+      setIsEdit(false)
+   }
+ 
+  
 
 
   return (
     <div className='mt-l flex flex-center' >
-      <form className={`note-edittor note-color-${noteColor} flex flex-column mt-s ` } onSubmit={saveNoteHandler}>
+      <form className={`note-edittor note-color-${noteColor} flex flex-column mt-s ` } onSubmit={editNotes? editHandler : saveNoteHandler}>
         <div className='flex'>
      <input type="text" placeholder='Title' className={`noteEditor-input mt-s p-s f-s  note-color-${noteColor}`} name='Title'
       value={title}
@@ -134,7 +170,7 @@ const tagPallets = [
          {tags !== '' && <div className='displayTags mt-s ml-s f-s font-l p-xs'>{tags}</div>}
        </div>
        <div>
-         <button className='editorNormal-btn  mr-s'type='submit' >Add</button>
+         <button className='editorNormal-btn  mr-s'type='submit' >{editNotes? "Edit" : "Add"}</button>
        </div>
      </div>
       </form>

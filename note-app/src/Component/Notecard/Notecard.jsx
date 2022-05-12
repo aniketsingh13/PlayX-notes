@@ -3,12 +3,15 @@ import "./Notecard.css";
  import {MdDelete} from "react-icons/md";
  import {BsArchiveFill} from "react-icons/bs";
  import {BiEdit} from "react-icons/bi";
-
+import { useState } from "react";
+import { Edit } from "../Index";
 
 
 const Notecard = ({notes}) => {
-  const {title,text,noteColor,tags,priority,CreatedAt} = notes;
+  const {_id,title,text,noteColor,tags,priority,CreatedAt} = notes;
+   const [isEdit,setIsEdit] = useState(false);
 
+  
   return (
     <div className=' mt-l flex flex-center ' >
       <section className='notecard-Container' style={{backgroundColor: noteColor}}>
@@ -28,7 +31,7 @@ const Notecard = ({notes}) => {
         })}`}
       </small>
           <div >
-         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}}><BiEdit /></button>
+         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}} onClick={() => setIsEdit(prev => !prev)} ><BiEdit /></button>
          <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}}><BsArchiveFill /></button>
          <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}}><MdDelete /></button>
          </div>
@@ -38,7 +41,9 @@ const Notecard = ({notes}) => {
         <div className="ml-s">{tags.length > 0 &&    <div className="noteCard-tag f-s font-l p-xss"> {tags}</div>}</div> 
         </div>
       </section>
-      
+       {isEdit && (
+        <Edit notes={notes} setIsEdit={setIsEdit}/>
+       )}
     </div>
   )
 }
