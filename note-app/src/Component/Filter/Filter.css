@@ -1,0 +1,41 @@
+
+.filter_Heading{
+    border: none;
+    padding: 1rem;
+    align-self: center;
+    cursor: pointer;
+   width: 8rem;
+    border-radius: 0 10px 10px 0;
+}
+.filter_Heading:hover{
+    background-color: var(--primary-color-hover);
+    border-radius: 0 10px 10px 0;
+}
+.filterContainer{
+    background-color: #fff;
+    box-shadow: 2px 2px 2px 2px var(--boxShadow-color);
+    position: absolute;
+    top: 23%;
+    right: 2%;
+    gap: .6rem;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.priority_container{
+    flex-direction: column;
+}
+.tag_container{
+    flex-direction: column;
+}
+.Date_container{
+    flex-direction: column;
+}
+.filter-btn{
+border: none;
+width: 100%;
+color: var(--offwhite);
+background-color: var(--primary-color-hover);
+cursor: pointer;
+}

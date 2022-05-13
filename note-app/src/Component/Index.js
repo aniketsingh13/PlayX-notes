@@ -3,4 +3,6 @@ import Aside from "./Aside/Aside";
 import Main from "./Main/Main";
 import Notecard from "./Notecard/Notecard";
 import Edit from "./Edit/Edit";
-export {Navbar,Aside,Main,Notecard,Edit}
+import Filter from "./Filter/Filter";
+
+export {Navbar,Aside,Main,Notecard,Edit,Filter}

@@ -41,7 +41,7 @@
   box-shadow: 2px 2px 2px 2px var(--boxShadow-color);
   position: absolute;
   top: 42%;
-  left: 44.5%;
+  left: 38%;
   justify-content: space-between;
   gap: .5rem;
   border-radius: 5px;
@@ -74,7 +74,7 @@
     box-shadow: 2px 2px 2px 2px var(--boxShadow-color);
     position: absolute;
     top: 42%;
-    left: 46%;
+    left: 40%;
     gap: .6rem;
     border-radius: 5px;
     flex-direction: column;
