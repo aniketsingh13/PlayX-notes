@@ -23,7 +23,23 @@ const noteReducer =(state,action)=>{
                             archives: state.archives.filter(item => item._id !== action.payload._id),
                             notes:[...state.notes,{...action.payload}]
                         }
-
+                     case "DELETE_NOTE":
+                         return {
+                             ...state,
+                             notes:state.notes.filter(item => item._id !== action.payload._id),
+                             trash:[...state.trash,{...action.payload}]
+                         }
+                         case "RESTOR_TRASHNOTE":
+                             return {
+                                 ...state,
+                                 trash: state.trash.filter(item => item._id !== action.payload._id),
+                                 notes: [...state.notes,{...action.payload}]
+                             }
+                             case "DELETE_FOREVER":
+                                 return{
+                                     ...state,
+                                     trash: state.trash.filter(item => item._id !== action.payload)
+                                 }
             default:
                 throw new Error("Action type not found");
          

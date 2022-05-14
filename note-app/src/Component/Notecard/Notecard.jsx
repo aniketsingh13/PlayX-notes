@@ -14,7 +14,7 @@ const Notecard = ({notes}) => {
   const {_id,title,text,noteColor,tags,priority,CreatedAt} = notes;
    const [isEdit,setIsEdit] = useState(false);
    const {encodedToken} = useAuth();
-   const {noteDispatch} = useNote()
+   const {noteDispatch} = useNote();
    const archieveHandler=async()=>{
       try {
         const response= await axios.post(`/api/notes/archives/${_id}`,
@@ -32,7 +32,20 @@ const Notecard = ({notes}) => {
         console.log(error.response)
       }
    }
-  
+     const deleteHandler=async()=>{
+       try {
+        const response = await axios.delete(`/api/notes/${_id}`,{
+          headers:{
+            authorization: encodedToken
+          }
+        })
+        if(response.status === 200){
+          noteDispatch({type: "DELETE_NOTE",payload: notes})
+        }
+       } catch (error) {
+        console.log(error.response)
+       }
+     }
   return (
     <div className=' mt-l flex flex-center flex-row ' >
       <section className='notecard-Container' style={{backgroundColor: noteColor}}>
@@ -54,7 +67,7 @@ const Notecard = ({notes}) => {
           <div >
          <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}} onClick={() => setIsEdit(prev => !prev)} ><BiEdit /></button>
          <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}} onClick={archieveHandler}><BsArchiveFill /></button>
-         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}}><MdDelete /></button>
+         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}} onClick={deleteHandler}><MdDelete /></button>
          </div>
         </div>
         <div className="flex">

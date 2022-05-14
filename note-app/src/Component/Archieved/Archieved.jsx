@@ -47,7 +47,7 @@ const Archieved = ({archives}) => {
         })}`}
       </small>
           <div >
-         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}} onClick={unArchieveHandler}><BsArchiveFill /></button>
+         <button className="notecard-btn f-m pr-s" style={{backgroundColor: noteColor}} onClick={unArchieveHandler}title='unArchieved Note'><BsArchiveFill /></button>
         
          </div>
         </div>
