@@ -1,0 +1,9 @@
+.archieve_aside{
+    flex: .9;
+}
+.archieve-center{
+    flex: 4.1;
+}
+.archieve-display{
+    color: var(--primary-color-hover);
+}

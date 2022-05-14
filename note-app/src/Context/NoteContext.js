@@ -9,7 +9,9 @@ const NoteContext= createContext();
     
 
    const[noteState,noteDispatch]=useReducer(noteReducer,{
-       notes:[]
+       notes:[],
+       archives : [],
+       trash : []
    })
 
 
