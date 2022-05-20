@@ -47,9 +47,6 @@ npm start
 
 With that you can see your app running on `localhost:3000`
 
----
-This project is still in progress feel free to come and check of progress .
-
 # ScreenShots
 
 ![image](https://res.cloudinary.com/aniket-singh/image/upload/v1653070782/Images/captures_chrome-capture-2022-4-20_4_eafi4p.png)
@@ -57,3 +54,6 @@ This project is still in progress feel free to come and check of progress .
 ![image](https://res.cloudinary.com/aniket-singh/image/upload/v1653070835/Images/captures_chrome-capture-2022-4-20_eqqaiy.png)
 ![image](https://res.cloudinary.com/aniket-singh/image/upload/v1653070884/Images/captures_chrome-capture-2022-4-20_2_az0nmf.png)
 ![image](https://res.cloudinary.com/aniket-singh/image/upload/v1653070916/Images/captures_chrome-capture-2022-4-20_3_jir6nt.png)
+
+
+# This project is still in progress feel free to come and check of progress .
