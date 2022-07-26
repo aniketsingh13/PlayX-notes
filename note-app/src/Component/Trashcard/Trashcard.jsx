@@ -2,10 +2,12 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { MdOutlineRestoreFromTrash } from "react-icons/md";
 import { useNote } from "../../Context/NoteContext";
+import { useToast } from "../../Hooks/useToast";
 
 const Trashcard = ({ trash }) => {
   const { _id, title, text, noteColor, tags, priority, CreatedAt } = trash;
   const { noteDispatch } = useNote();
+  const {showToast} = useToast()
 
   return (
     <div className="mt-l ml-l">
@@ -35,7 +37,7 @@ const Trashcard = ({ trash }) => {
               className="notecard-btn f-m pr-s"
               style={{ backgroundColor: noteColor }}
               onClick={() =>
-                noteDispatch({ type: "RESTOR_TRASHNOTE", payload: trash })
+                noteDispatch({ type: "RESTOR_TRASHNOTE", payload: trash },showToast("success","note restore successfully"))
               }
               title="Restore trash"
             >
@@ -46,7 +48,7 @@ const Trashcard = ({ trash }) => {
               style={{ backgroundColor: noteColor }}
               title="delete forever"
               onClick={() =>
-                noteDispatch({ type: "DELETE_FOREVER", payload: _id })
+                noteDispatch({ type: "DELETE_FOREVER", payload: _id },showToast("success","note deleted"))
               }
             >
               <MdDelete />

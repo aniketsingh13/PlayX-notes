@@ -9,6 +9,7 @@ import { v4 as uuid } from "uuid";
 import axios from "axios";
 import { BsFillPinFill } from "react-icons/bs";
 import { BsPin } from "react-icons/bs";
+import { useToast } from "../../Hooks/useToast";
 
 const colorpalletColors = [
   { id: uuid(), color: "" },
@@ -28,6 +29,7 @@ const tagPallets = [
   { id: uuid(), tag: "College" },
 ];
 const Main = ({ editNotes, setIsEdit }) => {
+
   const [state, dispatch] = useReducer(setnoteReducer, {
     title: editNotes?.title || "",
     text: editNotes?.text || "",
@@ -50,6 +52,7 @@ const Main = ({ editNotes, setIsEdit }) => {
   } = state;
   const { noteDispatch } = useNote();
   const { encodedToken } = useAuth();
+  const {showToast}= useToast()
 
   const saveNoteHandler = async (e) => {
     e.preventDefault();
@@ -76,9 +79,10 @@ const Main = ({ editNotes, setIsEdit }) => {
       if (response.status === 201) {
         noteDispatch({ type: "ADD_NOTE", payload: newNote });
         dispatch({ type: "RESET" });
+        showToast("success", "note added successfully")
       }
     } catch (error) {
-      console.log(error.response);
+      showToast("something went wrong")
     }
   };
 
@@ -96,9 +100,10 @@ const Main = ({ editNotes, setIsEdit }) => {
 
       if (response.status === 201) {
         noteDispatch({ type: "EDIT_NOTES", payload: updateNotes });
+        showToast("success","note edited successfully")
       }
     } catch (error) {
-      console.log(error.response);
+      showToast("error","something went wrong")
     }
   };
 

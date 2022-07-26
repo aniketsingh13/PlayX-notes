@@ -3,11 +3,14 @@ import { BsArchiveFill } from "react-icons/bs";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContex";
 import { useNote } from "../../Context/NoteContext";
+import { useToast } from "../../Hooks/useToast";
+
 
 const Archieved = ({ archives }) => {
   const { _id, title, text, noteColor, tags, priority, CreatedAt } = archives;
   const { encodedToken } = useAuth();
   const { noteDispatch } = useNote();
+  const {showToast} = useToast()
 
   const unArchieveHandler = async () => {
     try {
@@ -22,9 +25,10 @@ const Archieved = ({ archives }) => {
       );
       if (response.status === 200) {
         noteDispatch({ type: "UNARCHIEVED_NOTE", payload: archives });
+        showToast("success","note unarchieve successfully")
       }
     } catch (error) {
-      console.log(error.response);
+      showToast("error","something went wrong")
     }
   };
 

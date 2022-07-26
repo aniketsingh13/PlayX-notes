@@ -7,12 +7,15 @@ import { Edit } from "../Index";
 import axios from "axios";
 import { useAuth } from "../../Context/AuthContex";
 import { useNote } from "../../Context/NoteContext";
+import { useToast } from "../../Hooks/useToast";
 
 const Notecard = ({ notes }) => {
   const { _id, title, text, noteColor, tags, priority, CreatedAt } = notes;
   const [isEdit, setIsEdit] = useState(false);
   const { encodedToken } = useAuth();
   const { noteDispatch } = useNote();
+  const {showToast} = useToast()
+
   const archieveHandler = async () => {
     try {
       const response = await axios.post(
@@ -26,11 +29,13 @@ const Notecard = ({ notes }) => {
       );
       if (response.status === 201) {
         noteDispatch({ type: "ARCHIEV_NOTE", payload: notes });
+        showToast("success","note move to archieve")
       }
     } catch (error) {
-      console.log(error.response);
+      showToast("error","something went wrong")
     }
   };
+  
   const deleteHandler = async () => {
     try {
       const response = await axios.delete(`/api/notes/${_id}`, {
@@ -40,9 +45,10 @@ const Notecard = ({ notes }) => {
       });
       if (response.status === 200) {
         noteDispatch({ type: "DELETE_NOTE", payload: notes });
+        showToast("success","note move to Trash")
       }
     } catch (error) {
-      console.log(error.response);
+      showToast("error","something went wrong")
     }
   };
   return (

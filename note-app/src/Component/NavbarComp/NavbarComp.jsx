@@ -2,14 +2,17 @@ import React from "react";
 import "./NavbarComp.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContex";
+import { useToast } from "../../Hooks/useToast";
 
 const NavbarComp = () => {
   const { setUser } = useAuth();
   const navigate = useNavigate;
+  const {showToast} = useToast()
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
     setUser(null);
+    showToast("success","loged out!");
     navigate("/");
   };
 

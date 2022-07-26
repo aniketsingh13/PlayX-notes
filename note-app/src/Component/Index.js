@@ -7,5 +7,6 @@ import Filter from "./Filter/Filter";
 import Archieved from "./Archieved/Archieved";
 import Trashcard from "./Trashcard/Trashcard";
 import RequireAuth from "./RequireAuth/RequireAuth";
+import Toast from "./Toast/Toast";
 
-export {Navbar,Aside,Main,Notecard,Edit,Filter,Archieved,Trashcard,RequireAuth}
+export {Navbar,Aside,Main,Notecard,Edit,Filter,Archieved,Trashcard,RequireAuth,Toast}
