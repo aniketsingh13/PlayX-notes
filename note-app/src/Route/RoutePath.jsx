@@ -1,25 +1,46 @@
-import React from 'react'
-import {Routes, Route, Navigate} from "react-router-dom";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Mockman from "mockman-js";
-import LandingPage from '../Page/LandingPage/LandingPage';
-import { Archieve, Delete, Home, Login, NotFound, Signup } from '../Page';
-import { useAuth } from '../Context/AuthContex';
+import LandingPage from "../Page/LandingPage/LandingPage";
+import { Archieve, Delete, Home, Login, NotFound, Signup } from "../Page";
+import { RequireAuth } from "../Component/Index";
+
 const RoutePath = () => {
-  const {encodedToken} = useAuth()
   return (
     <div>
-        <Routes>
-            <Route  path='/' element={<LandingPage />} />
-            <Route  path='/home' element={encodedToken  ? <Home />  : <Navigate to='/login' replace/> } />
-             <Route path='/delete' element={<Delete />} />
-             <Route path='/archieve' element={<Archieve />} />
-             <Route path='/mockman' element={<Mockman />} />
-             <Route path="/login"    element={<Login />} />
-             <Route path="/signup"  element={<Signup />} />
-             <Route path="*"   element={<NotFound />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/home"
+          element={
+            <RequireAuth>
+              <Home />{" "}
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/delete"
+          element={
+            <RequireAuth>
+              <Delete />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/archieve"
+          element={
+            <RequireAuth>
+              <Archieve />
+            </RequireAuth>
+          }
+        />
+        <Route path="/mockman" element={<Mockman />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default RoutePath
+export default RoutePath;
