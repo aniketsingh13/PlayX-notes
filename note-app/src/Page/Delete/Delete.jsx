@@ -2,10 +2,13 @@ import React from "react";
 import "./Delete.css";
 import { Aside, Navbar, Trashcard } from "../../Component/Index";
 import { useNote } from "../../Context/NoteContext";
+import { useDocumentTitle } from "../../Hooks/useDocumetTitle";
 
 const Delete = () => {
   const { noteState } = useNote();
   const { trash } = noteState;
+  useDocumentTitle("Delete")
+
   return (
     <div>
       <Navbar />

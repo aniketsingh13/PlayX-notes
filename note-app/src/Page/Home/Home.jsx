@@ -8,6 +8,7 @@ import { Priority } from "../../Utils/Priority";
 import { useFilter } from "../../Context/FilterContext";
 import { Tags } from "../../Utils/Tags";
 import { SortByDate } from "../../Utils/SortByDate";
+import { useDocumentTitle } from "../../Hooks/useDocumetTitle";
 
 const Home = () => {
   const { noteState } = useNote();
@@ -22,6 +23,8 @@ const Home = () => {
   unPinnedNotes = Priority(unPinnedNotes, priorities);
   unPinnedNotes = Tags(unPinnedNotes, tags);
   unPinnedNotes = SortByDate(unPinnedNotes, sortByDate);
+  useDocumentTitle("Home")
+
   return (
     <div>
       <main className="main-container">

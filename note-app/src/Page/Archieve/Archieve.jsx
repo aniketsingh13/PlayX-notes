@@ -1,11 +1,14 @@
 import React from 'react'
 import { Archieved, Aside, Navbar } from '../../Component/Index';
 import { useNote } from '../../Context/NoteContext';
+import { useDocumentTitle } from '../../Hooks/useDocumetTitle';
 import "./Archieve.css";
 
 const Archieve = () => {
   const {noteState} = useNote()
   const {archives} = noteState;
+  useDocumentTitle("Archieve")
+
   return (
     <div>
       <Navbar />

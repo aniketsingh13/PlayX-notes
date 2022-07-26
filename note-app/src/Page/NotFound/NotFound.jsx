@@ -1,7 +1,11 @@
 import React from "react";
+import { useDocumentTitle } from "../../Hooks/useDocumetTitle";
 import "./NotFound.css";
 
 const NotFound = () => {
+
+  useDocumentTitle("notFound")
+
   return (
     <main className="main404-container  ">
       <h2 className="Page404-heading f-l font-xl mb-l p-s">Page not found</h2>

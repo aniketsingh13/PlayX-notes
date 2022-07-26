@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Context/AuthContex";
 import axios from "axios";
 import {useToast} from "../../../Hooks/useToast"
+import { useDocumentTitle } from "../../../Hooks/useDocumetTitle";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,8 +16,8 @@ const Login = () => {
   const { setUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const {showToast} = useToast()
- 
+  const {showToast} = useToast();
+   useDocumentTitle("login");
   
 
   const loginHandler = async (e) => {

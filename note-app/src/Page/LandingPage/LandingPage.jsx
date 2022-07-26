@@ -2,8 +2,13 @@ import "./LandingPage.css";
 import { Link } from "react-router-dom";
 import React from "react";
 import { Navbar } from "../../Component/Index";
+import { useDocumentTitle } from "../../Hooks/useDocumetTitle";
 
 const LandingPage = () => {
+  
+  useDocumentTitle("LandingPage")
+
+
   return (
     <div className="main-container">
       <Navbar />
