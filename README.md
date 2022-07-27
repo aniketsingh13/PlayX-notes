@@ -27,6 +27,7 @@ A note taking app
 - filter with labels
 - filter with priority
 - Authentication
+- Alerts
 
  # Installation Steps
  ##  1. Clone the app
