@@ -12,11 +12,11 @@ const Filter = () => {
         className="filter_Heading f-m font-l mt-l"
         onClick={() => setFilterToggle((prev) => !prev)}
       >
-        Sort By
+        Sort & filter
       </button>
       {filterToggle && (
         <div className="filterContainer flex">
-          <div className="p-xss f-s font-s">Sort by priority</div>
+          <div className="p-xss f-s font-s">Filter by priority</div>
           <div className="priority_container flex">
             <label>
               <input
@@ -61,7 +61,7 @@ const Filter = () => {
               Low
             </label>
           </div>
-          <div className="f-s font-s">Sort By tag</div>
+          <div className="f-s font-s">Filter By tag</div>
           <div className="tag_container flex">
             <label>
               <input
